@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.pet.food</groupId>
-	<artifactId>food-service</artifactId>
+	<artifactId>pet-food</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>food-service</name>
+	<name>pet-food</name>
 	<description>Product Project</description>
 
 	<parent>
@@ -68,6 +68,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.13</version>
+				<configuration>
+					<repository>pet/${project.artifactId}</repository>
+					<buildArgs>
+						<JAR_FILE>${project.artifactId}-${project.version}.jar</JAR_FILE>
+					</buildArgs>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
