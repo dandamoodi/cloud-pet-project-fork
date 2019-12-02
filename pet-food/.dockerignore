@@ -1,0 +1,4 @@
+src
+target/*/*
+
+!target/pet-food-0.0.1-SNAPSHOT.jar

@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+
+  pet-eureka:
+    image: "pet/pet-eureka:latest"
+    ports:
+      - "8761:8761"
+  pet-food:
+    image: "pet/pet-food:latest"
+    ports:
+      - "8011:8011"
+    links:
+      - pet-eureka
+    environment:
+      - EUREKA_URI=http://pet-eureka:8761/eureka
+  cat-service:
+    image: "pet/cat-service:latest"
+    ports:
+      - "8070:8070"
+    links:
+      - pet-eureka
+      - pet-food
+    environment:
+      - EUREKA_URI=http://pet-eureka:8761/eureka
+  dog-service:
+    image: "pet/dog-service:latest"
+    ports:
+      - "8090:8090"
+    links:
+      - pet-eureka
+      - pet-food
+    environment:
+      - EUREKA_URI=http://pet-eureka:8761/eureka
+  pet-api:
+    image: "pet/pet-api:latest"
+    ports:
+      - "8080:8080"
+    links:
+      - pet-eureka
+      - pet-food
+      - cat-service
+      - dog-service
+    environment:
+      - EUREKA_URI=http://pet-eureka:8761/eureka
