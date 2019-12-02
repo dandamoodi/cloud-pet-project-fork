@@ -111,3 +111,11 @@ Complete sample project with spring cloud using cloud config, eureka, zuul, feig
      GET  /app/dog/food
  
  [more info](https://medium.com/@27.rahul.k/build-a-sample-project-with-spring-cloud-using-cloud-config-eureka-zuul-feign-hystrix-and-378b16bcb7c3)
+
+http://localhost:8761/
+http://localhost:8011/food/pet/dog
+http://localhost:8011/food/pet/cat
+http://localhost:8090/dog/food
+http://localhost:8090/dog/sound
+http://localhost:8070/cat/food
+http://localhost:8070/cat/sound
